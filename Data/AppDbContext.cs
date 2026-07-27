@@ -26,7 +26,80 @@ public class AppDbContext : DbContext
             .WithMany(user => user.RequestedTickets)
             .HasForeignKey(ticket => ticket.RequesterUserId)
             .OnDelete(DeleteBehavior.Restrict);
+            
+        modelBuilder.Entity<Ticket>()
+            .HasOne(ticket => ticket.ResponsibleUser)
+            .WithMany(user => user.ResponsibleTickets)
+            .HasForeignKey(ticket => ticket.ResponsibleUserId)
+            .OnDelete(DeleteBehavior.SetNull);
 
-        // TODO: Montar os outros relacionamentos
+        modelBuilder.Entity<Status>().HasData(
+            new Status
+            {
+                Id = 1,
+                Title = "Aberto"
+            },
+            new Status
+            {
+                Id = 2,
+                Title = "Em andamento"
+            },
+            new Status
+            {
+                Id = 3,
+                Title = "Fechado"
+            }
+        );
+
+        modelBuilder.Entity<Priority>().HasData(
+            new Priority
+            {
+                Id = 1,
+                Title = "Não definida"
+            },
+            new Priority
+            {
+                Id = 2,
+                Title = "Baixa"
+            },
+            new Priority
+            {
+                Id = 3,
+                Title = "Média"
+            },
+            new Priority
+            {
+                Id = 4,
+                Title = "Alta"
+            }
+        );
+
+        modelBuilder.Entity<Department>().HasData(
+            new Department
+            {
+                Id = 1,
+                Name = "IT"
+            }
+        );
+
+        modelBuilder.Entity<Person>().HasData(
+            new Person
+            {
+                Id = 1,
+                Name = "Administrator"
+            }
+        );
+
+        modelBuilder.Entity<User>().HasData(
+            new User
+            {
+                Id = 1,
+                Username = "admin",
+                Password = "",
+                PersonId = 1,
+                DepartmentId = 1
+            }
+        );
+
     }
 }
