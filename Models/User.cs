@@ -11,4 +11,7 @@ public class User
     // Collections 
     public ICollection<Ticket> RequestedTickets { get; set; } = [];
     public ICollection<Ticket> ResponsibleTickets { get; set; } = [];
+    // Navigation properties
+    public Person Person { get; set; } = null!;
+    public Department Department { get; set; } = null!;
 }

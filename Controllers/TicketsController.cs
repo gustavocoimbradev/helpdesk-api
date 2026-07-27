@@ -4,7 +4,6 @@ using Helpdesk_Api.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 namespace Helpdesk_Api.Controllers;
-
 [ApiController]
 [Route("[controller]")]
 public class TicketsController : ControllerBase
@@ -15,16 +14,23 @@ public class TicketsController : ControllerBase
         _context = context;
     }
     [HttpGet]
-    [Route("all")]
     public async Task<ActionResult<IEnumerable<Ticket>>> GetAll()
     {
-        var Tickets =  await _context.Tickets.ToListAsync();
-
-        return Ok(Tickets);
+        var tickets = await _context.Tickets.ToListAsync();
+        var response = tickets.Select(ticket => new TicketResponse
+        {
+            Id = ticket.Id,
+            Title = ticket.Title,
+            Description = ticket.Description,
+            RequesterUserId = ticket.RequesterUserId,
+            ResponsibleUserId = ticket.ResponsibleUserId,
+            Status = ticket.StatusId,
+            CreatedAt = ticket.CreatedAt
+        });
+        return Ok(response);
     }
-
     [HttpPost]
-    [Route("new")]
+    [Route("create")]
     public async Task<ActionResult> Create(CreateTicketRequest request)
     {
         var ticket = new Ticket
@@ -37,5 +43,4 @@ public class TicketsController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(ticket);
     }
-
 }
