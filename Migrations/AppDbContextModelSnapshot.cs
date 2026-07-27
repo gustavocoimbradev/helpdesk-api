@@ -79,22 +79,22 @@ namespace helpdesk_api.Migrations
                         new
                         {
                             Id = 1,
-                            Title = "Não definida"
+                            Title = "Undefined"
                         },
                         new
                         {
                             Id = 2,
-                            Title = "Baixa"
+                            Title = "Low"
                         },
                         new
                         {
                             Id = 3,
-                            Title = "Média"
+                            Title = "Medium"
                         },
                         new
                         {
                             Id = 4,
-                            Title = "Alta"
+                            Title = "High"
                         });
                 });
 
@@ -116,17 +116,17 @@ namespace helpdesk_api.Migrations
                         new
                         {
                             Id = 1,
-                            Title = "Aberto"
+                            Title = "Open"
                         },
                         new
                         {
                             Id = 2,
-                            Title = "Em andamento"
+                            Title = " In progress"
                         },
                         new
                         {
                             Id = 3,
-                            Title = "Fechado"
+                            Title = "Closed"
                         });
                 });
 
@@ -190,6 +190,10 @@ namespace helpdesk_api.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("PersonId");
+
                     b.ToTable("Users");
 
                     b.HasData(
@@ -219,6 +223,25 @@ namespace helpdesk_api.Migrations
                     b.Navigation("RequesterUser");
 
                     b.Navigation("ResponsibleUser");
+                });
+
+            modelBuilder.Entity("Helpdesk_Api.Models.User", b =>
+                {
+                    b.HasOne("Helpdesk_Api.Models.Department", "Department")
+                        .WithMany()
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Helpdesk_Api.Models.Person", "Person")
+                        .WithMany()
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("Helpdesk_Api.Models.User", b =>

@@ -147,3 +147,5 @@
 /home/gustavo/repos/gustavocoimbradev/helpdesk-api/bin/Debug/net10.0/runtimes/win-x64/native/e_sqlite3.dll
 /home/gustavo/repos/gustavocoimbradev/helpdesk-api/bin/Debug/net10.0/runtimes/win-x86/native/e_sqlite3.dll
 /home/gustavo/repos/gustavocoimbradev/helpdesk-api/obj/Debug/net10.0/helpdesk-api.sourcelink.json
+/home/gustavo/repos/gustavocoimbradev/helpdesk-api/bin/Debug/net10.0/package.json
+/home/gustavo/repos/gustavocoimbradev/helpdesk-api/bin/Debug/net10.0/Scalar.AspNetCore.dll

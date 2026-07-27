@@ -1,0 +1,21 @@
+{
+  "name": "helpdesk-api",
+  "version": "1.0.0",
+  "description": "> 🚧 Projeto em desenvolvimento",
+  "main": "index.js",
+  "scripts": {
+    "publish": "git add . && git pull && git commit -m 'update' && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavocoimbradev/helpdesk-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gustavocoimbradev/helpdesk-api/issues"
+  },
+  "homepage": "https://github.com/gustavocoimbradev/helpdesk-api#readme"
+}

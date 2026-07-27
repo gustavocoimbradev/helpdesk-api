@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CBeqHZCrPOU=",
+  "dgSpecHash": "B+gopWBXDxc=",
   "success": true,
   "projectFilePath": "/home/gustavo/repos/gustavocoimbradev/helpdesk-api/helpdesk-api.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "/home/gustavo/.nuget/packages/microsoft.visualstudio.solutionpersistence/1.0.52/microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
     "/home/gustavo/.nuget/packages/mono.texttemplating/3.0.0/mono.texttemplating.3.0.0.nupkg.sha512",
     "/home/gustavo/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
+    "/home/gustavo/.nuget/packages/scalar.aspnetcore/2.16.16/scalar.aspnetcore.2.16.16.nupkg.sha512",
     "/home/gustavo/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.1.11/sqlitepclraw.bundle_e_sqlite3.2.1.11.nupkg.sha512",
     "/home/gustavo/.nuget/packages/sqlitepclraw.core/2.1.11/sqlitepclraw.core.2.1.11.nupkg.sha512",
     "/home/gustavo/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.1.11/sqlitepclraw.lib.e_sqlite3.2.1.11.nupkg.sha512",

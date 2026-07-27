@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace helpdesk_api.Migrations
 {
     /// <inheritdoc />
@@ -77,6 +79,18 @@ namespace helpdesk_api.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Users_Departments_DepartmentId",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Users_People_PersonId",
+                        column: x => x.PersonId,
+                        principalTable: "People",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,6 +124,42 @@ namespace helpdesk_api.Migrations
                         onDelete: ReferentialAction.SetNull);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Departments",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "IT" });
+
+            migrationBuilder.InsertData(
+                table: "People",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { 1, "Administrator" });
+
+            migrationBuilder.InsertData(
+                table: "Priorities",
+                columns: new[] { "Id", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Undefined" },
+                    { 2, "Low" },
+                    { 3, "Medium" },
+                    { 4, "High" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Statuses",
+                columns: new[] { "Id", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Open" },
+                    { 2, " In progress" },
+                    { 3, "Closed" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "DepartmentId", "Password", "PersonId", "Username" },
+                values: new object[] { 1, 1, "", 1, "admin" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Tickets_RequesterUserId",
                 table: "Tickets",
@@ -119,17 +169,21 @@ namespace helpdesk_api.Migrations
                 name: "IX_Tickets_ResponsibleUserId",
                 table: "Tickets",
                 column: "ResponsibleUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_DepartmentId",
+                table: "Users",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_PersonId",
+                table: "Users",
+                column: "PersonId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "People");
-
             migrationBuilder.DropTable(
                 name: "Priorities");
 
@@ -141,6 +195,12 @@ namespace helpdesk_api.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Departments");
+
+            migrationBuilder.DropTable(
+                name: "People");
         }
     }
 }

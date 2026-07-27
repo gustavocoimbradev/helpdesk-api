@@ -37,17 +37,17 @@ public class AppDbContext : DbContext
             new Status
             {
                 Id = 1,
-                Title = "Aberto"
+                Title = "Open"
             },
             new Status
             {
                 Id = 2,
-                Title = "Em andamento"
+                Title = " In progress"
             },
             new Status
             {
                 Id = 3,
-                Title = "Fechado"
+                Title = "Closed"
             }
         );
 
@@ -55,22 +55,22 @@ public class AppDbContext : DbContext
             new Priority
             {
                 Id = 1,
-                Title = "Não definida"
+                Title = "Undefined"
             },
             new Priority
             {
                 Id = 2,
-                Title = "Baixa"
+                Title = "Low"
             },
             new Priority
             {
                 Id = 3,
-                Title = "Média"
+                Title = "Medium"
             },
             new Priority
             {
                 Id = 4,
-                Title = "Alta"
+                Title = "High"
             }
         );
 
